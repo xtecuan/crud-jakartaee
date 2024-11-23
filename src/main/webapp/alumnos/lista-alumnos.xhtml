@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../templates/template.xhtml">
+
+            <ui:define name="top">
+                <h1>Listado de Alumnos</h1>
+            </ui:define>
+
+            <ui:define name="content">
+                <p:outputPanel id="alumnoViewPanel">
+
+                    <h:form prependId="false" id="viewAlumnoForm">
+
+                        <p:dataTable id="alumnoTable" value="#{alumnosBean.alumnos}" var="alumno" resizableColumns="true" paginator="true"
+                                     paginatorTemplate="{currentPageReport} {FirstPageLink} {PreviousPageLink}" 
+                                     paginatorPosition="bottom" widgetVar="alumnoTable" emptyMessage="No se encontraron Aluumnos" reflow="true" >
+
+                            <p:column headerText="Id"><h:outputText value="#{alumno.id}/>"</p:column>
+                            <p:column headerText="Nombres"><h:outputText value="#{alumno.nombres}/>"</p:column>
+                            <p:column headerText="Apellidos"><h:outputText value="#{alumno.apellidos}/>"</p:column>
+                            <p:column headerText="E-mail"><h:outputText value="#{alumno.email}/>"</p:column>
+                        </p:dataTable>
+
+                    </h:form>
+
+                </p:outputPanel>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
